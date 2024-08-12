@@ -6,6 +6,7 @@ This plugin integrates Intel(R) Xe Super Sampling (X<sup>e</sup>SS) into Unreal 
 Intel(R) X<sup>e</sup>SS enables an innovative framerate boosting technology supported by Intel(R) Arc(TM) graphics cards and other GPU vendors. Using AI deep-learning to perform upscaling, X<sup>e</sup>SS offers higher framerates without degrading the image.
 For more information visit: https://github.com/intel/xess
 
+If you encounter any integration issues, feel free to use the [Intel® XeSS Inspector](https://intel.com/xess-inspector). This tool is specifically designed to simplify the validation and debugging of XeSS integration within applications.
 
 ## Contents
 
