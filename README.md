@@ -1,19 +1,12 @@
-# Intel® X<sup>e</sup>SS Plugin for Unreal* Engine
+# Intel® XeSS Plugin for Unreal Engine
 
 ## Introduction
-This plugin integrates Intel(R) Xe Super Sampling (X<sup>e</sup>SS) into Unreal Engine 4 as of 4.26 (or higher) and Unreal Engine 5.
 
-Intel(R) X<sup>e</sup>SS enables an innovative framerate boosting technology supported by Intel(R) Arc(TM) graphics cards and other GPU vendors. Using AI deep-learning to perform upscaling, X<sup>e</sup>SS offers higher framerates without degrading the image.
-For more information visit: https://github.com/intel/xess
+Intel® XeSS Plugin for Unreal Engine integrates [Intel® XeSS 2 technologies](https://www.intel.com/content/www/us/en/developer/topic-technology/gamedev/xess2.html) into Unreal Engine. XeSS Super Resolution (XeSS-SR), XeSS Frame Generation (XeSS-FG) and Xe Low Latency (XeLL) are parts of XeSS 2.
+
+For more information, please visit: [https://github.com/intel/xess](https://github.com/intel/xess)
 
 If you encounter any integration issues, feel free to use the [Intel® XeSS Inspector](https://intel.com/xess-inspector). This tool is specifically designed to simplify the validation and debugging of XeSS integration within applications.
-
-## Contents
-
-| Folder / file | Description |
-| ----------- | ----------- |
-| README.md | This readme file |
-| LICENSE.txt | Licenses for this plugin |
 
 ## Downloads
 
