@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Intel® XeSS Plugin for Unreal Engine integrates [Intel® XeSS 2 technologies](https://www.intel.com/content/www/us/en/developer/topic-technology/gamedev/xess2.html) into Unreal Engine. XeSS Super Resolution (XeSS-SR), XeSS Frame Generation (XeSS-FG) and Xe Low Latency (XeLL) are parts of XeSS 2.
+Intel® XeSS Plugin for Unreal Engine integrates Intel® [XeSS 3 technologies](https://www.intel.com/content/www/us/en/developer/topic-technology/gamedev/xess.html) into Unreal Engine. XeSS Super Resolution (XeSS-SR), XeSS Frame Generation (XeSS-FG) including Multi-Frame Generation and Xe Low Latency (XeLL) are parts of XeSS 3.
 
 For more information, please visit: [https://github.com/intel/xess](https://github.com/intel/xess)
 
