@@ -34,16 +34,23 @@ Please open the [Releases](https://github.com/GameTechDev/XeSSUnrealPlugin/relea
 
 ## Installing the plugin
 
+> **Note:** For C++ Unreal projects, it is recommended to copy the plugin to `<PROJECT_DIR>/Plugins/XeSS` instead.
+> No standalone build step is required — the plugin will be built along with your project build.
+> The plugin will be enabled automatically; no manual enabling in the Editor is needed.
+> After copying, regenerate Visual Studio project files (right-click the `.uproject` file and select **Generate Visual Studio project files**).
+
+For Blueprint Unreal projects or engine-level installation, follow the steps below.
+
 ### Step 1: Build the plugin (for the source code version of UE only)
 
-- Open the terminal and go to `<ue_root_dir>\Engine\Build\BatchFiles`
+- Open the terminal and go to `<UE_ROOT_DIR>/Engine/Build/BatchFiles`
 
 - Run the command line:
 
    <!-- Use ```text (not ```bat) as a workaround to generate PDF file -->
 
    ```text
-   RunUAT.bat BuildPlugin -Plugin="<path_to_downloaded_plugin>\XeSS.uplugin" -Package="<path_to_destination_plugin>" -TargetPlatforms=Win64 -VS2019
+   RunUAT.bat BuildPlugin -Plugin="<DOWNLOADED_PLUGIN_DIR>/XeSS.uplugin" -Package="<DESTINATION_PLUGIN_DIR>" -TargetPlatforms=Win64 -VS2019
    ```
 
    > **Note:** The last parameter is the version of Visual Studio used to build, required by UE 4 only.
@@ -52,10 +59,10 @@ Please open the [Releases](https://github.com/GameTechDev/XeSSUnrealPlugin/relea
 
 Copy the (pre-)built plugin files to the appropriate location:
 
-- For UE 4: `<ue_root_dir>\Engine\Plugins\Runtime\Intel\XeSS`
+- For UE 4: `<UE_ROOT_DIR>/Engine/Plugins/Runtime/Intel/XeSS`
 
-- For UE 5: `<ue_root_dir>\Engine\Plugins\Marketplace\XeSS`
-  > **Notes:** Please maintain this exact folder structure when installing the plugin. Deviating from this path may cause failures when packaging your game from the Editor. If folder `Marketplace` doesn't exist, please create it manually.
+- For UE 5: `<UE_ROOT_DIR>/Engine/Plugins/Marketplace/XeSS`
+  > **Note:** Please maintain this exact folder structure when installing the plugin. Deviating from this path may cause failures when packaging your game from the Editor. If folder `Marketplace` doesn't exist, please create it manually.
 
 <div style="page-break-after: always;"></div>
 
@@ -131,10 +138,10 @@ r.XeSS.Enabled 1
 To change the Quality Mode:
 
 ```text
-r.XeSS.Quality <quality_mode>
+r.XeSS.Quality <QUALITY_MODE>
 ```
 
-Where `<quality_mode>` represents the scale factor:
+Where `<QUALITY_MODE>` represents the scale factor:
 
 <!-- QUALITY EDIT: -->
 
@@ -169,10 +176,10 @@ r.XeFG.Enabled 1
 To configure the maximum number of interpolated frames:
 
 ```text
-r.XeFG.MaxInterpolatedFrames <value>
+r.XeFG.MaxInterpolatedFrames <VALUE>
 ```
 
-Where `<value>` is the number of frames XeFG interpolates between consecutive original frames.
+Where `<VALUE>` is the number of frames XeFG interpolates between consecutive original frames.
 
 - Valid range: `[1, r.XeFG.MaxInterpolatedFramesSupported]`
 - Default: `1`
@@ -271,7 +278,7 @@ Canvas->DrawShadowedString(
 
 ### Plugin log file
 
-The XeSS plugin creates a separate log file `xess.log` in the same directory as Unreal Engine log files (typically `<project>/Saved/Logs/`). This log file is available in all build configurations including Shipping, and contains:
+The XeSS plugin creates a separate log file `xess.log` in the same directory as Unreal Engine log files (typically `<PROJECT_DIR>/Saved/Logs/`). This log file is available in all build configurations including Shipping, and contains:
 
 - Plugin version information
 - SDK version information for XeSS-SR, XeSS-FG, and XeLL
@@ -338,10 +345,10 @@ Frame dump console variables have been deprecated, please use [Intel® XeSS Insp
 UE provides a console command that allows you to take high resolution screen captures:
 
 ```text
-HighResShot <screen_resolution>
+HighResShot <SCREEN_RESOLUTION>
 ```
 
-When using this tool while XeSS-SR is engaged, please make sure to set `<screen_resolution>` to the currently set output resolution (can be set with `r.SetRes <screen_resolution>`). Otherwise, the capture tool will change the target resolution, which will re-initialize the XeSS context and drop all temporally accumulated data. As a result, the captured image will not reflect the actual quality seen on the screen.
+When using this tool while XeSS-SR is engaged, please make sure to set `<SCREEN_RESOLUTION>` to the currently set output resolution (can be set with `r.SetRes <SCREEN_RESOLUTION>`). Otherwise, the capture tool will change the target resolution, which will re-initialize the XeSS context and drop all temporally accumulated data. As a result, the captured image will not reflect the actual quality seen on the screen.
 
 <div style="page-break-after: always;"></div>
 
@@ -353,11 +360,13 @@ Currently, only Windows x64 is supported.
 
 ### Rendering Hardware Interfaces (RHIs) supported
 
-| Feature | RHIs Supported |
-| ------- | -------------- |
-| XeSS-SR | DirectX 12     |
-| XeSS-FG | DirectX 12     |
-| XeLL    | DirectX 12     |
+| Feature  | RHIs Supported                   |
+| -------- | -------------------------------- |
+| XeSS-SR  | DirectX 11*, DirectX 12, Vulkan* |
+| XeSS-FG  | DirectX 12                       |
+| XeLL     | DirectX 12                       |
+
+> **Note:** Items marked with * have limitations: DirectX 11 is supported only on Intel® Arc™ Graphics or later, and for Vulkan limitations, see the [Known issues](#known-issues) section.
 
 ### Unreal Engine versions supported
 
@@ -445,3 +454,5 @@ This may happen if you check FPS with the `stat FPS` console command, because th
 - XeSS-FG doesn't support split screen and Virtual Reality (VR) due to XeSS SDK API limitations.
 
 - XeSS-SR has a known resource leak issue with split screen and Virtual Reality (VR) support in Unreal Engine 4. A UE source patch is required to address this issue. Please contact your Intel representative to obtain the patch.
+
+- XeSS-FG may cause a crash when used alongside certain older versions of [OBS (Open Broadcaster Software)](https://obsproject.com). To resolve this issue, upgrade OBS to version 30.1.0 or above.
