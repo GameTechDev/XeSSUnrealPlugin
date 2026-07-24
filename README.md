@@ -181,11 +181,12 @@ r.XeFG.MaxInterpolatedFrames <VALUE>
 
 Where `<VALUE>` is the number of frames XeFG interpolates between consecutive original frames.
 
-- Valid range: `[1, r.XeFG.MaxInterpolatedFramesSupported]`
-- Default: `1`
+- Valid range: `0` (auto) or `[1, r.XeFG.MaxInterpolatedFramesSupported]`
+- Default: `0`
 
 Examples:
 
+- `0` = auto (uses `r.XeFG.MaxInterpolatedFramesSupported`)
 - `1` = 2x frame rate (1 original + 1 interpolated frame)
 - `2` = 3x frame rate (1 original + 2 interpolated frames)
 
@@ -196,6 +197,21 @@ r.XeFG.MaxInterpolatedFramesSupported
 ```
 
 This is a read-only console variable that shows the maximum interpolated frames supported by XeFG on the current platform.
+
+To configure the XeSS-FG UI composition state:
+
+```text
+r.XeFG.UICompositionState <VALUE>
+```
+
+Where `<VALUE>` controls whether XeSS-FG UI composition is enabled:
+
+| Value | UI composition state |
+| ----- | -------------------- |
+| 0     | Disabled (default)   |
+| 1     | Enabled              |
+
+If something is wrong with your UI, try setting this console variable to `1`.
 
 #### XeLL
 
@@ -278,7 +294,7 @@ Canvas->DrawShadowedString(
 
 ### Plugin log file
 
-The XeSS plugin creates a separate log file `xess.log` in the same directory as Unreal Engine log files (typically `<PROJECT_DIR>/Saved/Logs/`). This log file is available in all build configurations including Shipping, and contains:
+The XeSS plugin creates a separate log file `xess.log` in the same directory as UE log files (typically `<PROJECT_DIR>/Saved/Logs/`). This log file is available in all build configurations including Shipping, and contains:
 
 - Plugin version information
 - SDK version information for XeSS-SR, XeSS-FG, and XeLL
@@ -302,7 +318,7 @@ The log file is rewritten each time the application starts.
 | XeSS-FG | `r.XeFG.Supported`  |
 | XeLL    | `r.XeLL.Supported`  |
 
-The support status depends on OS, RHI, and [Unreal Engine version](#unreal-engine-versions-supported). Please check the FAQ for more detailed information.
+The support status depends on OS, RHI, and [UE version](#ue-versions-supported). Please check the FAQ for more detailed information.
 
 ### Verifying if a feature is enabled in a running game
 
@@ -368,7 +384,7 @@ Currently, only Windows x64 is supported.
 
 > **Note:** Items marked with * have limitations: DirectX 11 is supported only on Intel® Arc™ Graphics or later, and for Vulkan limitations, see the [Known issues](#known-issues) section.
 
-### Unreal Engine versions supported
+### UE versions supported
 
 | Feature | UE Versions Supported    |
 | ------- | ------------------------ |
@@ -437,6 +453,8 @@ This may happen if you check FPS with the `stat FPS` console command, because th
 
 - Pre-built UE 5.1 package doesn't work with 5.1.0, please upgrade to 5.1.1.
 
+- XeLL doesn't work with UE 5.8.0; please wait for an Unreal Engine update or contact your Intel representative to obtain a UE source patch.
+
 - If the following link error occurs with pre-built packages, please upgrade Visual Studio to the latest version:
 
   ```text
@@ -453,6 +471,6 @@ This may happen if you check FPS with the `stat FPS` console command, because th
 
 - XeSS-FG doesn't support split screen and Virtual Reality (VR) due to XeSS SDK API limitations.
 
-- XeSS-SR has a known resource leak issue with split screen and Virtual Reality (VR) support in Unreal Engine 4. A UE source patch is required to address this issue. Please contact your Intel representative to obtain the patch.
+- XeSS-SR has a known resource leak issue with split screen and Virtual Reality (VR) support in UE 4. A UE source patch is required to address this issue. Please contact your Intel representative to obtain the patch.
 
 - XeSS-FG may cause a crash when used alongside certain older versions of [OBS (Open Broadcaster Software)](https://obsproject.com). To resolve this issue, upgrade OBS to version 30.1.0 or above.
