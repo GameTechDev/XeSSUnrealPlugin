@@ -453,7 +453,7 @@ This may happen if you check FPS with the `stat FPS` console command, because th
 
 - Pre-built UE 5.1 package doesn't work with 5.1.0, please upgrade to 5.1.1.
 
-- XeLL doesn't work with UE 5.8.0; please wait for an Unreal Engine update or contact your Intel representative to obtain a UE source patch.
+- XeLL doesn't work with UE 5.8.0 and 5.8.1; please wait for an Unreal Engine update or patch Unreal Engine source with [EpicGames/UnrealEngine commit 32b38854dabe1b3db1518625c6fd808033d3a0ef](https://github.com/EpicGames/UnrealEngine/commit/32b38854dabe1b3db1518625c6fd808033d3a0ef).
 
 - If the following link error occurs with pre-built packages, please upgrade Visual Studio to the latest version:
 
