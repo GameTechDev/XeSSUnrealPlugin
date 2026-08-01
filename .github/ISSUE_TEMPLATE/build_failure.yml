@@ -1,0 +1,65 @@
+name: Build failure
+description: Report a build failure
+title: "[Build failure]: "
+labels: ["build", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this build failure report!
+        The more detailed information you provide, the less time it will take to fix the issue.
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin Version
+      description: XeSS Unreal plugin version
+      placeholder: ex. 2.3.0
+    validations:
+      required: true
+  - type: input
+    id: engine-version
+    attributes:
+      label: Engine Version
+      description: Unreal Engine version
+      placeholder: ex. 5.2
+  - type: checkboxes
+    id: unreal-engine-source
+    attributes:
+      label: Unreal Engine Source
+      description: Select this if you are using a source-built Unreal Engine instead of the official pre-built binaries (Launcher/Epic).
+      options:
+        - label: "I am using a source-built Unreal Engine"
+  - type: textarea
+    id: build-error
+    attributes:
+      label: Build Error Message
+      description: Please paste the build error message(s)
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: build-logs
+    attributes:
+      label: Build Logs
+      description: |
+        Please attach the full build log file(s) if available.
+        Tip: You can attach files by clicking this area to highlight it and then dragging files in.
+    validations:
+      required: false
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: Reproduce Steps
+      description: Please list all the steps to reproduce the issue.
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: false
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: |
+        Please provide additional information that may be helpful (e.g., environment variables, custom build settings, etc.).
