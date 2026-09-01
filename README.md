@@ -182,7 +182,7 @@ r.XeFG.MaxInterpolatedFrames <VALUE>
 Where `<VALUE>` is the number of frames XeFG interpolates between consecutive original frames.
 
 - Valid range: `0` (auto) or `[1, r.XeFG.MaxInterpolatedFramesSupported]`
-- Default: `0`
+- Default: `1`
 
 Examples:
 
@@ -453,7 +453,7 @@ This may happen if you check FPS with the `stat FPS` console command, because th
 
 - Pre-built UE 5.1 package doesn't work with 5.1.0, please upgrade to 5.1.1.
 
-- XeLL doesn't work with UE 5.8.0 and 5.8.1; please wait for an Unreal Engine update or patch Unreal Engine source with [EpicGames/UnrealEngine commit 32b38854dabe1b3db1518625c6fd808033d3a0ef](https://github.com/EpicGames/UnrealEngine/commit/32b38854dabe1b3db1518625c6fd808033d3a0ef).
+- XeLL doesn't work with UE 5.8.0 and 5.8.1. To resolve this issue, upgrade to UE 5.8.2 or above, or patch Unreal Engine source with [EpicGames/UnrealEngine commit 32b38854dabe1b3db1518625c6fd808033d3a0ef](https://github.com/EpicGames/UnrealEngine/commit/32b38854dabe1b3db1518625c6fd808033d3a0ef).
 
 - If the following link error occurs with pre-built packages, please upgrade Visual Studio to the latest version:
 
@@ -474,3 +474,7 @@ This may happen if you check FPS with the `stat FPS` console command, because th
 - XeSS-SR has a known resource leak issue with split screen and Virtual Reality (VR) support in UE 4. A UE source patch is required to address this issue. Please contact your Intel representative to obtain the patch.
 
 - XeSS-FG may cause a crash when used alongside certain older versions of [OBS (Open Broadcaster Software)](https://obsproject.com). To resolve this issue, upgrade OBS to version 30.1.0 or above.
+
+- XeSS-SR will crash if enabled with bindless rendering in UE 5.7. To resolve this issue, upgrade to UE 5.8.2 or above.
+
+- `XeSS Frame Generation Override` compatibility with the current plugin requires Intel® Graphics Software `26.26.2459.3` or later. Version `26.26.2459.3` is bundled with Intel® Graphics Driver `32.0.101.8974`.
